@@ -70,27 +70,27 @@ export function Hero({ studentCount, scrollToSection }: HeroProps) {
 
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 size="lg"
-                className="bg-primary text-white hover:bg-primary/90 font-bold px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-primary text-white hover:bg-primary/90 font-bold px-3 sm:px-6 md:px-8 py-3 sm:py-5 md:py-6 text-sm sm:text-lg md:text-xl rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto"
                 onClick={handleBuyNow}
               >
-                <span className="flex items-center gap-2 sm:gap-3">
-                  <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <span className="whitespace-nowrap">Get ApplySolo Germany</span>
-                  <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span className="flex items-center justify-center gap-1.5 sm:gap-3">
+                  <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 flex-shrink-0" />
+                  <span className="truncate">Get ApplySolo Germany</span>
+                  <ArrowRight className="h-4 w-4 sm:h-6 sm:w-6 flex-shrink-0" />
                 </span>
               </Button>
 
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-white text-white hover:bg-primary hover:text-white px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg rounded-lg transition-all duration-300"
+                className="border-2 border-white text-white hover:bg-primary hover:text-white px-3 sm:px-6 md:px-8 py-3 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg rounded-lg transition-all duration-300 w-full sm:w-auto"
                 onClick={() => scrollToSection("whats-inside")}
               >
-                <Play className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                <span className="whitespace-nowrap">See how it works</span>
+                <Play className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">See how it works</span>
               </Button>
             </div>
 
