@@ -2,12 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { FileText, Target, Users, Star, BookOpen, Eye, CheckCircle } from "lucide-react"
 import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useRef } from "react"
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
-}
 
 const detailedFeatures = [
   {
@@ -81,64 +76,16 @@ export function Features({ scrollToSection }: FeaturesProps) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate badge
-      gsap.from(".features-badge", {
-        scale: 0,
-        opacity: 0,
-        duration: 0.6,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: featuresRef.current,
-          start: "top 80%",
-        },
-      })
-
-      // Animate heading with split
-      gsap.from(".features-heading", {
+      gsap.from(".feature-card", {
         y: 50,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
+        stagger: 0.1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: featuresRef.current,
           start: "top 80%",
         },
-      })
-
-      // Animate cards with smooth fade-in
-      gsap.from(".feature-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: {
-          amount: 0.6,
-          from: "start",
-        },
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".feature-card",
-          start: "top 90%",
-        },
-      })
-
-      // Add hover animation
-      document.querySelectorAll(".feature-card").forEach((card) => {
-        card.addEventListener("mouseenter", () => {
-          gsap.to(card, {
-            y: -10,
-            boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
-        card.addEventListener("mouseleave", () => {
-          gsap.to(card, {
-            y: 0,
-            boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
-            duration: 0.3,
-            ease: "power2.out",
-          })
-        })
       })
     }, featuresRef)
 
@@ -146,42 +93,42 @@ export function Features({ scrollToSection }: FeaturesProps) {
   }, [])
 
   return (
-    <section ref={featuresRef} id="whats-inside" className="py-20 px-4 relative overflow-hidden">
+    <section ref={featuresRef} id="whats-inside" className="py-12 sm:py-16 md:py-20 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <Badge className="features-badge bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
+        <div className="text-center mb-12 sm:mb-16">
+          <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
             📦 COMPLETE PACKAGE
           </Badge>
-          <h2 className="features-heading text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-6">
-           What’s Inside the ₹499 ApplySolo Germany System?
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-4 sm:mb-6 px-2">
+           What's Inside the ₹499 ApplySolo Germany System?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
             Everything you need to execute German public university admissions correctly —
 built as a structured, phase-based operating system for Indian students.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {detailedFeatures.map((feature, index) => (
             <Card
               key={index}
-              className="feature-card glow-card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/90 dark:bg-gray-800/90 border-2 border-primary/30 shadow-xl overflow-hidden backdrop-blur-sm"
+              className="feature-card glow-card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-secondary/50 border border-white shadow-lg overflow-hidden backdrop-blur-sm"
             >
               <CardHeader className="pb-4">
-                <div className="bg-primary/30 rounded-full w-14 h-14 flex items-center justify-center mb-4 border-2 border-primary/50">
-                  <feature.icon className="h-7 w-7 text-primary" />
+                <div className="bg-primary/20 rounded-full w-12 h-12 flex items-center justify-center mb-4 border border-white">
+                  <feature.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                   {feature.title}
                 </CardTitle>
-                <CardDescription className="text-gray-700 dark:text-gray-300 text-base">{feature.description}</CardDescription>
+                <CardDescription className="text-muted-foreground text-base">{feature.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {feature.details.map((detail, detailIndex) => (
                     <li key={detailIndex} className="flex items-start space-x-3">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-300">{detail}</span>
+                      <span className="text-muted-foreground">{detail}</span>
                     </li>
                   ))}
                 </ul>
