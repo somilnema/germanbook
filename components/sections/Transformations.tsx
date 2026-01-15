@@ -92,9 +92,9 @@ to a clear, phase-by-phase German admission system.
           </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 px-4">
           <Button
-            className="bg-primary text-white hover:bg-primary/90 font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-primary text-white hover:bg-primary/90 font-bold px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto max-w-md sm:max-w-none"
             onClick={() => scrollToSection("buy-now")}
           >
             Get the ApplySolo Germany System

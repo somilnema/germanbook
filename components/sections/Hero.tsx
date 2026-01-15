@@ -55,8 +55,8 @@ export function Hero({ studentCount, scrollToSection }: HeroProps) {
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div ref={textRef} className="space-y-4 sm:space-y-6 md:space-y-8">
-            <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
+          <div ref={textRef} className="space-y-4 sm:space-y-6 md:space-y-8 pt-8 sm:pt-0">
+            <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30 mt-4 sm:mt-0">
               🔥 LIMITED TIME OFFER - 70% OFF
             </Badge>
 
