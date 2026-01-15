@@ -105,11 +105,10 @@ export function Features({ scrollToSection }: FeaturesProps) {
         },
       })
 
-      // Animate cards with 3D effect
+      // Animate cards with smooth fade-in
       gsap.from(".feature-card", {
-        y: 100,
+        y: 60,
         opacity: 0,
-        rotateX: -15,
         duration: 0.8,
         stagger: {
           amount: 0.6,
@@ -166,23 +165,23 @@ built as a structured, phase-based operating system for Indian students.
           {detailedFeatures.map((feature, index) => (
             <Card
               key={index}
-              className="feature-card glow-card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-secondary/50 border border-white shadow-lg overflow-hidden backdrop-blur-sm"
+              className="feature-card glow-card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/90 dark:bg-gray-800/90 border-2 border-primary/30 shadow-xl overflow-hidden backdrop-blur-sm"
             >
               <CardHeader className="pb-4">
-                <div className="bg-primary/20 rounded-full w-12 h-12 flex items-center justify-center mb-4 border border-white">
-                  <feature.icon className="h-6 w-6 text-primary" />
+                <div className="bg-primary/30 rounded-full w-14 h-14 flex items-center justify-center mb-4 border-2 border-primary/50">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
                   {feature.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground text-base">{feature.description}</CardDescription>
+                <CardDescription className="text-gray-700 dark:text-gray-300 text-base">{feature.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {feature.details.map((detail, detailIndex) => (
                     <li key={detailIndex} className="flex items-start space-x-3">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground">{detail}</span>
+                      <span className="text-gray-700 dark:text-gray-300">{detail}</span>
                     </li>
                   ))}
                 </ul>

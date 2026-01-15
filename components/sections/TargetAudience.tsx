@@ -20,9 +20,9 @@ export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate cards with flip effect
+      // Animate cards with smooth fade
       gsap.from(".audience-card", {
-        rotateY: 90,
+        y: 50,
         opacity: 0,
         duration: 0.8,
         stagger: 0.15,
@@ -52,9 +52,9 @@ export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
   }, [])
 
   return (
-    <section ref={sectionRef} id="who-its-for" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
+    <section ref={sectionRef} id="who-its-for" className="py-16 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
             🎯 DESIGNED FOR SERIOUS APPLICANTS
           </Badge>
