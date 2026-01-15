@@ -2,7 +2,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { FileText, Target, Users, Star, BookOpen, Eye, CheckCircle } from "lucide-react"
 import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useEffect, useRef } from "react"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const detailedFeatures = [
   {
@@ -76,16 +81,65 @@ export function Features({ scrollToSection }: FeaturesProps) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".feature-card", {
+      // Animate badge
+      gsap.from(".features-badge", {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: featuresRef.current,
+          start: "top 80%",
+        },
+      })
+
+      // Animate heading with split
+      gsap.from(".features-heading", {
         y: 50,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
+        duration: 1,
         ease: "power3.out",
         scrollTrigger: {
           trigger: featuresRef.current,
           start: "top 80%",
         },
+      })
+
+      // Animate cards with 3D effect
+      gsap.from(".feature-card", {
+        y: 100,
+        opacity: 0,
+        rotateX: -15,
+        duration: 0.8,
+        stagger: {
+          amount: 0.6,
+          from: "start",
+        },
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".feature-card",
+          start: "top 90%",
+        },
+      })
+
+      // Add hover animation
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, {
+            y: -10,
+            boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+            duration: 0.3,
+            ease: "power2.out",
+          })
+        })
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            y: 0,
+            boxShadow: "0 10px 20px rgba(0,0,0,0.1)",
+            duration: 0.3,
+            ease: "power2.out",
+          })
+        })
       })
     }, featuresRef)
 
@@ -96,10 +150,10 @@ export function Features({ scrollToSection }: FeaturesProps) {
     <section ref={featuresRef} id="whats-inside" className="py-20 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
+          <Badge className="features-badge bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
             📦 COMPLETE PACKAGE
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-6">
+          <h2 className="features-heading text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-6">
            What’s Inside the ₹499 ApplySolo Germany System?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">

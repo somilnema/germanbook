@@ -1,14 +1,58 @@
+"use client"
+
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { GraduationCap, Globe, Award, TrendingUp, CheckCircle } from "lucide-react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 interface TargetAudienceProps {
   scrollToSection: (sectionId: string) => void
 }
 
 export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate cards with flip effect
+      gsap.from(".audience-card", {
+        rotateY: 90,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".audience-card",
+          start: "top 85%",
+        },
+      })
+
+      // Animate icons
+      gsap.from(".audience-icon", {
+        scale: 0,
+        rotation: 180,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: ".audience-icon",
+          start: "top 85%",
+        },
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="who-its-for" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
+    <section ref={sectionRef} id="who-its-for" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
@@ -49,7 +93,7 @@ export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
           ].map((item, index) => (
             <Card
               key={index}
-              className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 dark:bg-secondary/50 backdrop-blur-sm border border-primary/20 shadow-lg overflow-hidden"
+              className="audience-card group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 dark:bg-secondary/50 backdrop-blur-sm border border-primary/20 shadow-lg overflow-hidden"
             >
               <div className="relative">
                 <img
@@ -58,7 +102,7 @@ export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute top-4 left-4">
+                <div className="audience-icon absolute top-4 left-4">
                   <div className="bg-white/90 dark:bg-secondary/90 backdrop-blur-sm rounded-full p-3 border border-primary/20">
                     <item.icon className="h-8 w-8 text-primary" />
                   </div>

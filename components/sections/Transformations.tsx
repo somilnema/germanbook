@@ -1,20 +1,98 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { X, CheckCircle } from "lucide-react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 interface TransformationsProps {
   scrollToSection: (sectionId: string) => void
 }
 
 export function Transformations({ scrollToSection }: TransformationsProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animate heading
+      gsap.from(".transform-heading", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      })
+
+      // Animate Before card from left
+      gsap.from(".before-card", {
+        x: -100,
+        opacity: 0,
+        rotation: -5,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".before-card",
+          start: "top 85%",
+        },
+      })
+
+      // Animate After card from right
+      gsap.from(".after-card", {
+        x: 100,
+        opacity: 0,
+        rotation: 5,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".after-card",
+          start: "top 85%",
+        },
+      })
+
+      // Animate bullet points with stagger
+      gsap.from(".bullet-point", {
+        x: -20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: ".bullet-point",
+          start: "top 90%",
+        },
+      })
+
+      // Animate CTA button
+      gsap.from(".transform-cta", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.8,
+        ease: "elastic.out(1, 0.5)",
+        scrollTrigger: {
+          trigger: ".transform-cta",
+          start: "top 90%",
+        },
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="transformations" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-secondary via-secondary/80 to-white dark:to-secondary">
+    <section ref={sectionRef} id="transformations" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-secondary via-secondary/80 to-white dark:to-secondary">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-white">
             🔍REAL ADMISSION CLARITY
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-6">From Confusion to Systematic Execution</h2>
+          <h2 className="transform-heading text-4xl md:text-5xl font-heading font-extrabold text-foreground drop-shadow-lg mb-6">From Confusion to Systematic Execution</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
              See how Indian students move from scattered advice and guesswork
 to a clear, phase-by-phase German admission system.
@@ -23,7 +101,7 @@ to a clear, phase-by-phase German admission system.
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative group">
+          <div className="before-card relative group">
             <div className="bg-white/80 dark:bg-secondary/50 backdrop-blur-sm p-8 rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-500 border border-white">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-red-400 flex items-center gap-2">
@@ -41,15 +119,15 @@ to a clear, phase-by-phase German admission system.
                 <div className="absolute inset-0 bg-red-500/10"></div>
               </div>
               <div className="mt-4 space-y-2">
-                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <p className="bullet-point text-sm text-muted-foreground flex items-center gap-2">
                   <X className="h-4 w-4 text-red-400" />
                   No clear sequence or roadmap  
                 </p>
-                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <p className="bullet-point text-sm text-muted-foreground flex items-center gap-2">
                   <X className="h-4 w-4 text-red-400" />
                  Random advice from multiple sources  
                 </p>
-                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <p className="bullet-point text-sm text-muted-foreground flex items-center gap-2">
                   <X className="h-4 w-4 text-red-400" />
                  Late discovery of eligibility or document issues
                 </p>
@@ -57,7 +135,7 @@ to a clear, phase-by-phase German admission system.
             </div>
           </div>
 
-          <div className="relative group">
+          <div className="after-card relative group">
             <div className="bg-white/80 dark:bg-secondary/50 backdrop-blur-sm p-8 rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-500 border-2 border-white">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-2xl font-bold text-green-500 flex items-center gap-2">
@@ -75,15 +153,15 @@ to a clear, phase-by-phase German admission system.
                 <div className="absolute inset-0 bg-primary/10"></div>
               </div>
               <div className="mt-4 space-y-2">
-                <p className="text-sm text-green-500 flex items-center gap-2">
+                <p className="bullet-point text-sm text-green-500 flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   Clear phase-by-phase execution plan
                 </p>
-                <p className="text-sm text-green-500 flex items-center gap-2">
+                <p className="bullet-point text-sm text-green-500 flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   Correct documents, portals, and timelines
                 </p>
-                <p className="text-sm text-green-500 flex items-center gap-2">
+                <p className="bullet-point text-sm text-green-500 flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   Full ownership with no consultant dependency
                 </p>
@@ -94,7 +172,7 @@ to a clear, phase-by-phase German admission system.
 
         <div className="text-center mt-12">
           <Button
-            className="bg-primary text-white hover:bg-primary/90 font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="transform-cta bg-primary text-white hover:bg-primary/90 font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             onClick={() => scrollToSection("buy-now")}
           >
             Get the ApplySolo Germany System
