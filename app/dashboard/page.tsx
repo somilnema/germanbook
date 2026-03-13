@@ -39,7 +39,7 @@ export default function DashboardPage() {
       <header className="bg-gray-800 border-b border-gray-700">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-bold text-green-400">Admivo Resume Kit</h1>
+            <h1 className="text-xl font-bold text-green-400">Apply Solo Germany</h1>
             <Button
               onClick={handleLogout}
               variant="outline"

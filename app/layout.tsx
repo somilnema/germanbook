@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Admivo Resume Kit - Transform Your University Application",
+  title: "Apply Solo Germany - Your Complete Guide to German Universities",
   description:
     "Join 5,000+ students who've secured admissions to top global universities with our comprehensive ₹499 DIY resume kit.",
     generator: 'v0.dev'
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={inter.className}>{children}</body>
     </html>
   )

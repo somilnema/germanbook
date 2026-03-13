@@ -46,10 +46,10 @@ export function Header({ scrollToSection }: HeaderProps) {
         isScrolled ? "bg-secondary/95 backdrop-blur-lg shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-4Z">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Logo" width={150} height={200} />
+            <Image src="/logo.png" alt="Logo" width={150} height={200} className="-mt-2 -ml-5" style={{ transform: "scaleX(1.1)" }} />
           </div>
 
           {/* Desktop Navigation */}
@@ -89,7 +89,7 @@ export function Header({ scrollToSection }: HeaderProps) {
           <div className="flex items-center space-x-4">
             <Button
               className="hidden lg:inline-flex bg-primary text-white hover:bg-primary/90 font-semibold px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              onClick={() => handleScroll("buy-now")}
+              onClick={() => handleScroll("package")}
             >
               Buy Now for ₹499
             </Button>
@@ -144,7 +144,7 @@ export function Header({ scrollToSection }: HeaderProps) {
               </button>
               <Button
                 className="bg-primary text-white hover:bg-primary/90 font-semibold mt-4"
-                onClick={() => handleScroll("buy-now")}
+                onClick={() => handleScroll("package")}
               >
                 Buy Now for ₹499
               </Button>

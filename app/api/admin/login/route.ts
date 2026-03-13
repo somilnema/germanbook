@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { generateAdminToken } from '@/lib/auth'
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@admivo'
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@applysolo'
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123'
 
 export async function POST(req: Request) {

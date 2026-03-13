@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 10%;
+    --background: 0 0% 8.6%;
     --foreground: 0 0% 100%;
     --card: 0 0% 12%;
     --card-foreground: 0 0% 100%;
@@ -12,7 +12,7 @@
     --popover-foreground: 0 0% 100%;
     --primary: 353 75% 45%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
+    --secondary: 0 0% 8.6%;
     --secondary-foreground: 0 0% 100%;
     --muted: 220 15% 15%;
     --muted-foreground: 0 0% 70%;
@@ -32,7 +32,7 @@
   }
 
   .dark {
-    --background: 0 0% 10%;
+    --background: 0 0% 8.6%;
     --foreground: 0 0% 100%;
     --card: 0 0% 12%;
     --card-foreground: 0 0% 100%;
@@ -40,7 +40,7 @@
     --popover-foreground: 0 0% 100%;
     --primary: 353 75% 45%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
+    --secondary: 0 0% 8.6%;
     --secondary-foreground: 0 0% 100%;
     --muted: 220 15% 15%;
     --muted-foreground: 0 0% 70%;
@@ -63,8 +63,18 @@
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Smooth transitions for all interactive elements */
+  a, button, input, textarea, select {
+    transition: all 0.3s ease-in-out;
   }
 }
 
@@ -177,7 +187,26 @@ html {
     transform: translateX(-50%);
   }
 }
+.animate-scroll-left {
+  animation: scroll-left 16s linear infinite;
+}
 
+.animate-scroll-right {
+  animation: scroll-right 16s linear infinite;
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animation-paused {
+  animation-play-state: paused;
+}
 .university-scroll {
   animation: scroll-left 14s linear infinite;
 }

@@ -11,7 +11,7 @@ import { Eye, EyeOff, Loader2 } from 'lucide-react'
 import { useAuth } from '@/lib/hooks/useAuth'
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState('admin@admivo')
+  const [email, setEmail] = useState('admin@applysolo')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -91,7 +91,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@admivo"
+                placeholder="admin@applysolo"
                 required
                 className="bg-gray-700 border-gray-600 text-white placeholder-gray-400"
                 disabled={loading}

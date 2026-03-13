@@ -59,7 +59,7 @@ export default function CheckoutPage() {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: orderData.order.amount,
         currency: orderData.order.currency,
-        name: "Admivo Resume Kit",
+        name: "Apply Solo Germany",
         description: "Resume Kit Purchase",
         order_id: orderData.order.id,
         handler: async function (response: any) {
@@ -151,6 +151,9 @@ export default function CheckoutPage() {
                       required
                       placeholder="Enter your email"
                     />
+                    <p className="text-xs text-muted-foreground">
+                      ⚠️ Important: The book will be sent to this email address. Please double-check for accuracy.
+                    </p>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone Number</Label>
@@ -193,17 +196,13 @@ export default function CheckoutPage() {
             <Card className="p-6 space-y-6">
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Admivo Resume Kit</span>
+                  <span className="text-muted-foreground">Apply Solo Germany</span>
                   <span className="font-semibold">₹499</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">GST (18%)</span>
-                  <span className="font-semibold">₹89.82</span>
                 </div>
                 <div className="border-t pt-4">
                   <div className="flex justify-between items-center">
                     <span className="font-bold">Total</span>
-                    <span className="text-2xl font-bold">₹588.82</span>
+                    <span className="text-2xl font-bold">₹499</span>
                   </div>
                 </div>
               </div>
@@ -213,15 +212,15 @@ export default function CheckoutPage() {
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>3 Professional Resume Templates</span>
+                    <span>Complete Apply Solo Germany Book</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>2 Exclusive Video Lectures</span>
+                    <span>Step-by-Step Application Guide</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>Lifetime Access to Updates</span>
+                    <span>APS Preparation & Document Checklist</span>
                   </li>
                 </ul>
               </div>

@@ -2,10 +2,16 @@
 
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle, Sparkles, ArrowRight, Play } from "lucide-react"
+import { CheckCircle, Sparkles, ArrowRight, Play, Star } from "lucide-react"
 import { gsap } from "gsap"
 import { useEffect, useRef } from "react"
+const avatars = [
+  "/man1.jpeg",
+  "/man2.jpeg",
+  "/man3.jpeg",
+  "/man4.jpeg",
+
+]
 
 interface HeroProps {
   studentCount: number
@@ -52,17 +58,42 @@ export function Hero({ studentCount, scrollToSection }: HeroProps) {
       id="home"
       className="min-h-screen flex items-center relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-12 md:py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Column - Text Content */}
           <div ref={textRef} className="space-y-4 sm:space-y-6 md:space-y-8 pt-8 sm:pt-0">
-            <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30 mt-4 sm:mt-0">
-              🔥 LIMITED TIME OFFER - 70% OFF
-            </Badge>
+            <div className="flex items-center gap-6 mt-4 sm:mt-0 mb-6">
+              {/* Avatars */}
+              <div className="flex -space-x-3">
+                {avatars.map((src, index) => (
+                  <img
+                    key={index}
+                    src={src}
+                    alt="creator"
+                    className="w-10 h-10 rounded-full border-2 border-black object-cover"
+                  />
+                ))}
+              </div>
+
+              {/* Rating */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </div>
+                <p className="text-sm text-gray-300">
+                  <span className="font-semibold text-white">500+</span> Students
+                </p>
+              </div>
+            </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-heading font-extrabold text-white drop-shadow-lg leading-tight">            
                            Crack German Public Universities {" "}
-              <span className="text-primary">Without Consultants or Guesswork</span>
+              <span className="text-primary">Without Consultants </span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl">
@@ -119,14 +150,14 @@ export function Hero({ studentCount, scrollToSection }: HeroProps) {
           <div ref={imageRef} className="relative">
             <div className="relative z-10">
               <img
-                src="/placeholder.svg?height=600&width=800"
+                src="/hero.png"
                 alt="Student with tablet"
-                className="w-full h-auto rounded-2xl shadow-2xl border border-white"
+                className="w-[90%] mx-auto min-h-[210px] sm:h-[300px] md:h-[400px] object-cover rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-secondary/50 backdrop-blur-sm p-3 sm:p-4 md:p-6 rounded-xl border border-white max-w-[200px] sm:max-w-none">
-                <div className="flex items-center gap-2 sm:gap-4">
-                  <div className="bg-primary/20 rounded-full p-2 sm:p-3 border border-primary/30">
-                    <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <div className="hidden sm:block absolute -bottom-8 -right-4 sm:-bottom-10 sm:-right-6 bg-secondary/50 backdrop-blur-sm p-2 sm:p-4 md:p-6 rounded-xl border border-white max-w-[160px] sm:max-w-none">
+                <div className="flex items-center gap-1 sm:gap-4">
+                  <div className="bg-green-500/20 rounded-full p-1 sm:p-3 border border-green-500/30">
+                    <CheckCircle className="h-4 w-4 sm:h-6 sm:w-6 text-green-500" />
                   </div>
                   <div>
                     <div className="text-foreground font-bold text-xs sm:text-sm md:text-base">Trusted by Students</div>

@@ -4,7 +4,7 @@ import { connectDB } from '@/lib/mongodb'
 import { User } from '@/lib/models/User'
 import { Order } from '@/lib/models/Order'
 import crypto from 'crypto'
-import { sendWelcomeEmail } from '@/lib/email'
+import { sendBookEmail } from '@/lib/email'
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID!,
@@ -43,14 +43,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
 
-    // Generate password and update user
-    const password = generatePassword()
-    user.password = password
+    // Update user status
     user.status = 'paid'
     await user.save()
 
-    // Send welcome email with credentials
-    await sendWelcomeEmail(user.email, user.userId!, password)
+    // Send email with Google Drive link to the book
+    const driveLink = process.env.BOOK_DRIVE_LINK || 'https://drive.google.com/drive/folders/1hJ8YBllOHiTQGnWaUBjFh1KLjimG-YBr?usp=drive_link'
+    try {
+      await sendBookEmail(user.email, user.name, driveLink)
+      console.log('Book email sent successfully to:', user.email)
+    } catch (emailError) {
+      console.error('Failed to send book email:', emailError)
+      // Continue anyway - don't fail the payment if email fails
+    }
 
     return NextResponse.json({ success: true })
   } catch (err) {

@@ -8,7 +8,7 @@ interface TargetAudienceProps {
 
 export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
   return (
-    <section id="who-its-for" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
+    <section id="who-its-for" className="py-8 sm:py-16 md:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white dark:from-secondary via-secondary/80 to-secondary">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-primary/30">
@@ -20,47 +20,47 @@ export function TargetAudience({ scrollToSection }: TargetAudienceProps) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {[
             {
-              icon: GraduationCap,
+              
               title: "Indian Master's Applicants",
               description: "For students planning a Master's degree in Germany who want clarity, control, and independence from consultants.",
-              image: "/placeholder.svg?height=200&width=300",
+              image: "/Indian.png?height=200&width=300",
             },
             {
-              icon: Globe,
+              
               title: "Public University Focused Students",
               description: "For applicants targeting German public universities — not private institutions with high tuition fees.",
-              image: "/placeholder.svg?height=200&width=300",
+              image: "/public.png?height=200&width=300",
             },
             {
-              icon: Award,
+              
               title: "First-Time Germany Applicants",
               description: "For students who feel overwhelmed by APS, Uni-Assist, documents, and timelines and want a clear system.",
-              image: "/placeholder.svg?height=200&width=300",
+              image: "/First-Time.png?height=200&width=300",
             },
             {
-              icon: TrendingUp,
+             
               title: "Self-Driven & Serious Candidates",
               description: "For students willing to follow sequence, take ownership, and execute admissions without shortcuts.",
-              image: "/placeholder.svg?height=200&width=300",
+              image: "/self.png?height=200&width=300",
             },
           ].map((item, index) => (
             <Card
               key={index}
               className="group hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white/80 dark:bg-secondary/50 backdrop-blur-sm border border-primary/20 shadow-lg overflow-hidden"
             >
-              <div className="relative">
+              <div className="relative h-52">
                 <img
                   src={item.image || "/placeholder.svg"}
                   alt={item.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
                 <div className="absolute top-4 left-4">
                   <div className="bg-white/90 dark:bg-secondary/90 backdrop-blur-sm rounded-full p-3 border border-primary/20">
-                    <item.icon className="h-8 w-8 text-primary" />
+                    
                   </div>
                 </div>
               </div>

@@ -20,11 +20,10 @@ export function CTA({ scrollToSection }: CTAProps) {
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary/20 via-primary/10 to-primary/5 p-8 md:p-12">
         <div className="relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Transform Your Career?
+            Ready to Transform Your Journey?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl">
-            Join thousands of successful job seekers who have used our resume kit to land their dream jobs.
-            Start your journey to success today.
+        Join thousands of successful students who have used our self operating system to land their dream universities. Start your journey to success today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button

@@ -53,9 +53,9 @@ export function FloatingBackground() {
           className="grid-line absolute top-0 bottom-0 w-px"
           style={{
             left: `${i * gridSize}px`,
-            background: 'linear-gradient(to bottom, transparent, #404040, transparent)',
+            background: 'linear-gradient(to bottom, transparent, #ffffff, transparent)',
             opacity: 0.15,
-            boxShadow: '0 0 1px rgba(64, 64, 64, 0.4)',
+            boxShadow: '0 0 1px rgba(255, 255, 255, 0.4)',
           }}
         />
       ))}
@@ -67,9 +67,9 @@ export function FloatingBackground() {
           className="grid-line absolute left-0 right-0 h-px"
           style={{
             top: `${i * gridSize}px`,
-            background: 'linear-gradient(to right, transparent, #404040, transparent)',
+            background: 'linear-gradient(to right, transparent, #ffffff, transparent)',
             opacity: 0.15,
-            boxShadow: '0 0 1px rgba(64, 64, 64, 0.4)',
+            boxShadow: '0 0 1px rgba(255, 255, 255, 0.4)',
           }}
         />
       ))}

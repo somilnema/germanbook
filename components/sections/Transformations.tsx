@@ -8,7 +8,7 @@ interface TransformationsProps {
 
 export function Transformations({ scrollToSection }: TransformationsProps) {
   return (
-    <section id="transformations" className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-secondary via-secondary/80 to-white dark:to-secondary">
+    <section id="transformations" className="py-8 sm:py-16 md:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-secondary via-secondary/80 to-white dark:to-secondary">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <Badge className="bg-primary/20 text-primary px-4 py-2 text-sm font-semibold mb-6 border border-white">
@@ -32,9 +32,9 @@ to a clear, phase-by-phase German admission system.
                 </h3>
                 <Badge variant="destructive" className="bg-red-500/20 text-red-400 border border-red-500/30">High Risk</Badge>
               </div>
-              <div className="bg-gray-50 dark:bg-secondary/30 h-80 rounded-xl flex items-center justify-center relative overflow-hidden border border-white">
+              <div className="bg-gray-50 dark:bg-secondary/30 h-58 rounded-xl flex items-center justify-center relative overflow-hidden border border-white">
                 <img
-                  src="/placeholder.svg?height=300&width=400"
+                  src="/before.png?height=300&width=400"
                   alt="Before resume example"
                   className="max-w-full max-h-full object-contain"
                 />
@@ -66,9 +66,9 @@ to a clear, phase-by-phase German admission system.
                 </h3>
                 <Badge className="bg-green-500/20 text-green-500 border border-green-500/30">System Aligned</Badge>
               </div>
-              <div className="bg-gray-50 dark:bg-secondary/30 h-80 rounded-xl flex items-center justify-center relative overflow-hidden border border-white">
+              <div className="bg-gray-50 dark:bg-secondary/30 h-58 rounded-xl flex items-center justify-center relative overflow-hidden border border-white">
                 <img
-                  src="/placeholder.svg?height=300&width=400"
+                  src="/after.png?height=300&width=400"
                   alt="After resume example"
                   className="max-w-full max-h-full object-contain"
                 />
@@ -95,7 +95,7 @@ to a clear, phase-by-phase German admission system.
         <div className="text-center mt-12 px-4">
           <Button
             className="bg-primary text-white hover:bg-primary/90 font-bold px-4 sm:px-6 md:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 w-full sm:w-auto max-w-md sm:max-w-none"
-            onClick={() => scrollToSection("buy-now")}
+            onClick={() => scrollToSection("package")}
           >
             Get the ApplySolo Germany System
           </Button>

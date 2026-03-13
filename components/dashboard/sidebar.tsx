@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useToast } from '@/components/ui/use-toast'
+import { JSX } from 'react/jsx-dev-runtime'
 
 interface SidebarProps {
   type: 'admin' | 'user'

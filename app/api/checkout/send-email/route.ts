@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       <html>
         <head>
           <meta charset="utf-8">
-          <title>Welcome to Admivo Resume Kit</title>
+          <title>Welcome to Apply Solo Germany</title>
           <style>
             body {
               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Welcome to Admivo Resume Kit! 🎉</h1>
+              <h1>Welcome to Apply Solo Germany! 🎉</h1>
               <p>Thank you for your purchase, ${user.name}!</p>
             </div>
             <div class="content">
@@ -106,22 +106,22 @@ export async function POST(req: NextRequest) {
                 <span>Download your purchase receipt</span>
               </div>
 
-              <a href="https://admivo-resume.vercel.app/dashboard" class="button">
+              <a href="https://applysologermany.com/dashboard" class="button">
                 Go to Dashboard
               </a>
 
               <h3>What's Included in Your Package:</h3>
               <ul>
-                <li>3 Professional ATS-Friendly Resume Templates</li>
-                <li>2 Exclusive Video Lectures</li>
-                <li>Lifetime Access to Updates</li>
-                <li>24/7 Customer Support</li>
+                <li>Complete Apply Solo Germany Book (View-Only Access)</li>
+                <li>Step-by-Step University Application Guide</li>
+                <li>APS Preparation & Document Requirements</li>
+                <li>Email Support for Any Questions</li>
               </ul>
 
               <p>If you have any questions or need assistance, our support team is here to help!</p>
             </div>
             <div class="footer">
-              <p>© ${new Date().getFullYear()} Admivo Resume Kit. All rights reserved.</p>
+              <p>© ${new Date().getFullYear()} Apply Solo Germany. All rights reserved.</p>
               <p>This email was sent to ${user.email}</p>
             </div>
           </div>
@@ -130,9 +130,9 @@ export async function POST(req: NextRequest) {
     `
 
     await transporter.sendMail({
-      from: process.env.SMTP_FROM || '"Admivo Resume Kit" <koitobanda@gmail.com>',
+      from: process.env.SMTP_FROM || '"Apply solo" <koitobanda@gmail.com>',
       to: user.email,
-      subject: "Welcome to Admivo Resume Kit! 🎉",
+      subject: "Welcome to Apply Solo! 🎉",
       html: emailHtml,
     })
 

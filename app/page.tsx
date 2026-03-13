@@ -25,7 +25,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
-export default function AdmivoResumeKit() {
+export default function ApplySoloGermany() {
   const [studentCount, setStudentCount] = useState(0)
   const [successRate, setSuccessRate] = useState(0)
   const headerRef = useRef<HTMLElement>(null)

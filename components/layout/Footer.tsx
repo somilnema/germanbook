@@ -1,10 +1,14 @@
+"use client"
+
 import { GraduationCap, Mail } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface FooterProps {
   scrollToSection: (sectionId: string) => void
 }
 
 export function Footer({ scrollToSection }: FooterProps) {
+  const router = useRouter()
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-secondary via-secondary/90 to-secondary py-12 px-4 pb-24 lg:pb-12">
       {/* Gradient Overlay */}
@@ -18,15 +22,22 @@ export function Footer({ scrollToSection }: FooterProps) {
                 <GraduationCap className="h-8 w-8 text-primary animate-bounce" />
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-ping"></div>
               </div>
-              <span className="text-xl font-bold text-foreground">Admivo Resume Kit</span>
+              <span className="text-xl font-bold text-foreground">Apply solo</span>
             </div>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              Transforming university applications, one resume at a time. Join thousands of students who've secured
-              admissions to their dream universities with our expert-crafted resume kit.
+         Most students don’t fail German admissions. They fail the process.
+ApplySolo Germany gives you a clear, step-by-step admission system to independently secure admission to German public universities 
+ without agents, without shortcuts, without confusion.
             </p>
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <Mail className="h-4 w-4" />
-              <span>support@Admivo Resume Kitresumekit.com</span>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2 text-muted-foreground">
+             
+          
+              </div>
+              <div className="flex items-center space-x-2 text-muted-foreground">
+                <Mail className="h-4 w-4" />
+                <span>applysolo30@gmail.com</span>
+              </div>
             </div>
           </div>
 
@@ -59,7 +70,7 @@ export function Footer({ scrollToSection }: FooterProps) {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection("buy-now")} 
+                  onClick={() => scrollToSection("package")} 
                   className="hover:text-primary transition-colors duration-300"
                 >
                   Buy Now
@@ -71,17 +82,49 @@ export function Footer({ scrollToSection }: FooterProps) {
           <div>
             <h4 className="font-bold mb-4 text-primary">Support</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Email Support</li>
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Download Help</li>
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Template Guide</li>
-              <li className="hover:text-primary transition-colors duration-300 cursor-pointer">Success Tips</li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/contact")}
+              >
+                Contact Us
+              </li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/download-help")}
+              >
+                Download Help
+              </li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/shipping-policy")}
+              >
+                Shipping Policy
+              </li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/cancellation-refund")}
+              >
+                Cancellations & Refunds
+              </li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/privacy-policy")}
+              >
+                Privacy Policy
+              </li>
+              <li 
+                className="hover:text-primary transition-colors duration-300 cursor-pointer"
+                onClick={() => router.push("/terms-and-conditions")}
+              >
+                Terms & Conditions
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-primary/20 pt-8 text-center">
           <p className="text-muted-foreground">
-            © 2024 Admivo Resume Kit. All rights reserved. | Helping students achieve their dreams since 2020.
+                  
           </p>
         </div>
       </div>
