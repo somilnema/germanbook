@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, CreditCard, Shield, Clock } from "lucide-react"
-import { Header } from "@/components/layout/Header";
 
 export default function CheckoutPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "" })
@@ -98,7 +97,7 @@ export default function CheckoutPage() {
           font_family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
         },
         modal: {
-          ondismiss: function() {
+          ondismiss: function () {
             setLoading(false)
           }
         }
@@ -115,135 +114,137 @@ export default function CheckoutPage() {
 
   return (
     <>
-    <Header scrollToSection={() => {}} />
-    <div className="min-h-screen bg-gradient-to-b from-secondary via-secondary/90 to-white dark:to-secondary px-4 py-32">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* Checkout Form */}
-          <div className="space-y-8">
-            <div>
-              <h1 className="text-3xl font-bold text-white">Complete Your Purchase</h1>
-              <p className="text-muted-foreground mt-2 text-white">Enter your details to proceed with the payment</p>
+      <div className="min-h-screen bg-slate-50 px-4 py-32">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid gap-8 md:grid-cols-2">
+            {/* Checkout Form */}
+            <div className="space-y-8">
+              <div>
+                <h1 className="text-3xl font-bold text-slate-900">Complete Your Purchase</h1>
+                <p className="text-slate-600 mt-2">Enter your details to proceed with the payment</p>
+              </div>
+
+              <Card className="p-6 bg-white border-slate-200 shadow-sm">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-slate-900">Full Name</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your full name"
+                        className="bg-white border-slate-200 text-slate-900 focus:ring-primary h-11"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-slate-900">Email Address</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your email"
+                        className="bg-white border-slate-200 text-slate-900 focus:ring-primary h-11"
+                      />
+                      <p className="text-xs text-slate-500">
+                        ⚠️ Important: The book will be sent to this email address. Please double-check for accuracy.
+                      </p>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-slate-900">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={form.phone}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your phone number"
+                        className="bg-white border-slate-200 text-slate-900 focus:ring-primary h-11"
+                      />
+                    </div>
+                  </div>
+
+                  {error && (
+                    <div className="p-3 bg-red-50 text-red-500 rounded-lg text-sm">
+                      {error}
+                    </div>
+                  )}
+
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={loading}
+                  >
+                    {loading ? "Processing..." : "Proceed to Payment"}
+                  </Button>
+                </form>
+              </Card>
             </div>
 
-            <Card className="p-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Order Summary */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900">Order Summary</h2>
+                <p className="text-slate-600 mt-2">Review your purchase details</p>
+              </div>
+
+              <Card className="p-6 space-y-6 bg-white border-slate-200 shadow-sm">
                 <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your email"
-                    />
-                    <p className="text-xs text-muted-foreground">
-                      ⚠️ Important: The book will be sent to this email address. Please double-check for accuracy.
-                    </p>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={form.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                </div>
-
-                {error && (
-                  <div className="p-3 bg-red-50 text-red-500 rounded-lg text-sm">
-                    {error}
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={loading}
-                >
-                  {loading ? "Processing..." : "Proceed to Payment"}
-                </Button>
-              </form>
-            </Card>
-          </div>
-
-          {/* Order Summary */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold text-white">Order Summary</h2>
-              <p className="text-muted-foreground mt-2 text-white">Review your purchase details</p>
-            </div>
-
-            <Card className="p-6 space-y-6">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Apply Solo Germany</span>
-                  <span className="font-semibold">₹499</span>
-                </div>
-                <div className="border-t pt-4">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold">Total</span>
-                    <span className="text-2xl font-bold">₹499</span>
+                    <span className="text-slate-600">Apply Solo Germany</span>
+                    <span className="font-semibold text-slate-900">₹499</span>
+                  </div>
+                  <div className="border-t pt-4">
+                    <div className="flex justify-between items-center">
+                      <span className="font-bold text-slate-900">Total</span>
+                      <span className="text-2xl font-bold text-slate-900">₹499</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="space-y-4">
-                <h3 className="font-semibold">What's Included:</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>Complete Apply Solo Germany Book</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>Step-by-Step Application Guide</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>APS Preparation & Document Checklist</span>
-                  </li>
-                </ul>
-              </div>
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-slate-900">What's Included:</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span className="text-slate-700">Complete Apply Solo Germany Book</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span className="text-slate-700">Step-by-Step Application Guide</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      <span className="text-slate-700">APS Preparation & Document Checklist</span>
+                    </li>
+                  </ul>
+                </div>
 
-              <div className="space-y-4 pt-4 border-t">
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Shield className="w-5 h-5" />
-                  <span>Secure Payment via Razorpay</span>
+                <div className="space-y-4 pt-4 border-t">
+                  <div className="flex items-center gap-3 text-sm text-slate-500">
+                    <Shield className="w-5 h-5" />
+                    <span>Secure Payment via Razorpay</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-slate-500">
+                    <Clock className="w-5 h-5" />
+                    <span>Instant Access After Payment</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-slate-500">
+                    <CreditCard className="w-5 h-5" />
+                    <span>Multiple Payment Options Available</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <Clock className="w-5 h-5" />
-                  <span>Instant Access After Payment</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <CreditCard className="w-5 h-5" />
-                  <span>Multiple Payment Options Available</span>
-                </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   )
 } 

@@ -152,7 +152,7 @@ export function Hero({ studentCount, scrollToSection }: HeroProps) {
               <img
                 src="/hero.png"
                 alt="Student with tablet"
-                className="w-[90%] mx-auto min-h-[210px] sm:h-[300px] md:h-[400px] object-cover rounded-2xl shadow-2xl"
+                className="w-[90%] mx-auto min-h-[210px] sm:h-[300px] md:h-[400px] object-cover rounded-none shadow-2xl"
               />
               <div className="hidden sm:block absolute -bottom-8 -right-4 sm:-bottom-10 sm:-right-6 bg-secondary/50 backdrop-blur-sm p-2 sm:p-4 md:p-6 rounded-xl border border-white max-w-[160px] sm:max-w-none">
                 <div className="flex items-center gap-1 sm:gap-4">

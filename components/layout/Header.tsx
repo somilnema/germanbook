@@ -42,14 +42,20 @@ export function Header({ scrollToSection }: HeaderProps) {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-secondary/95 backdrop-blur-lg shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-secondary/95 backdrop-blur-lg shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 py-4Z">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Logo" width={150} height={200} className="-mt-2 -ml-5" style={{ transform: "scaleX(1.1)" }} />
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              width={250}
+              height={300}
+              className="-mt-2 -ml-5"
+              style={{ transform: "scaleX(1.1)", filter: "brightness(0) invert(31%) sepia(87%) saturate(2257%) hue-rotate(212deg) brightness(96%) contrast(92%)" }}
+            />
           </div>
 
           {/* Desktop Navigation */}
