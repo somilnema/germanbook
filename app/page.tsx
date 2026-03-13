@@ -88,7 +88,7 @@ export default function App() {
   const [heroImageIndex, setHeroImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   
-  const heroImages = ["/heroo.jpeg", "/hero2.png"];
+  const heroImages = ["/heroo.jpeg", "/HERO2.png"];
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
@@ -216,7 +216,7 @@ export default function App() {
                 Germany Admission Blueprint
               </h1>
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-8">
-                A step-by-step roadmap for Indian students applying to Masters & MBA in Germany(70+Pages).
+                A step-by-step roadmap for Indian students applying to Masters & MBA in Germany(95+Pages).
               </p>
 
               {/* SECTION 3 — QUICK VALUE POINTS */}
@@ -323,7 +323,7 @@ export default function App() {
               { title: "ECTS Calculation Example", desc: "How to convert your Indian credits to German ECTS.", img: "/itb2.png" },
               { title: "Germany Application Timeline", desc: "Month-by-month guide for Winter & Summer intake.", img: "/itb3.png" },
               { title: "SOP Writing Framework", desc: "The exact structure that gets you admitted.", img: "/itb4.png" },
-              { title: "After Reaching Germany", desc: "Essential steps and guidance once you arrive in Germany.", img: "/itb5.png" }
+              { title: "After Reaching Germany", desc: "Essential steps and guidance once you arrive in Germany.", img: "/ITB5.png" }
             ].map((page, i) => (
               <motion.div
                 key={i}
